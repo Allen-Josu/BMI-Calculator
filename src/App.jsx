@@ -118,8 +118,8 @@ function App() {
                     !isMaxWeight && <p className='text-warning'>Largest ever documented weight is 650 kg by Jon Brower Minnoch</p>
                   }
                   <div className="d-flex justify-content-center gap-2 w-100">
-                    <Button type='submit' disable="true" variant="contained" className='py-2 fs-6 mt-3 w-50'>Calculate</Button>
-                    <Button onClick={Reset} variant="contained" className='py-2 fs-6 mt-3 w-50'>Reset</Button>
+                    <Button type='submit' disabled={isHeight && isMaxHeight && isWeight && isMaxWeight ? false : true} variant="contained" className='py-2 fs-6 mt-3 w-50'>Calculate</Button>
+                    <Button onClick={Reset} variant="outlined" className='py-2 fs-6 mt-3 w-50'>Reset</Button>
                   </div>
                 </form>
               </div>
