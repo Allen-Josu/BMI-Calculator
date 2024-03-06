@@ -20,7 +20,7 @@ function App() {
       if (name === "height") {
         setHeight(value)
         setIsHeight(true)
-        if (value <= 2.73 && value > 0) {
+        if (value < 2.73 && value > 0) {
           setIsMaxHeight(true)
         }
         else {
@@ -30,7 +30,7 @@ function App() {
       else {
         setWeight(value)
         setIsWeight(true)
-        if (value <= 650) {
+        if (value <= 650 && value > 0) {
           setIsMaxWeight(true)
         }
         else {
