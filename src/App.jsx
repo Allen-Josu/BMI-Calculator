@@ -13,6 +13,7 @@ function App() {
   const [isMaxWeight, setIsMaxWeight] = useState(true)
   const [bmivalue, setBmiValue] = useState("")
   const [isbmi, setIsBmi] = useState(false)
+  const [isminweight, setIsMinWeight] = useState(true)
 
   const Validate = (e) => {
     const { name, value } = e.target
@@ -30,12 +31,18 @@ function App() {
       else {
         setWeight(value)
         setIsWeight(true)
-        if (value <= 650 && value > 0) {
+        if (value <= 650) {
           setIsMaxWeight(true)
+          if (value > 0) {
+            setIsMinWeight(true)
+          } else {
+            setIsMinWeight(false)
+          }
         }
         else {
           setIsMaxWeight(false)
         }
+
       }
     }
     else {
@@ -53,6 +60,8 @@ function App() {
         setIsMaxWeight(true)
         if (value === "") {
           setIsWeight(true)
+          setIsMaxWeight(true)
+          setIsMinWeight(true)
         }
       }
     }
@@ -66,6 +75,7 @@ function App() {
     setIsMaxWeight(true)
     setIsWeight(true)
     setIsBmi(false)
+    setIsMinWeight(true)
   }
 
   const Submit = (e) => {
@@ -117,8 +127,11 @@ function App() {
                   {
                     !isMaxWeight && <p className='text-warning'>Largest ever documented weight is 650 kg by Jon Brower Minnoch</p>
                   }
+                  {
+                    !isminweight && <p className='text-warning'>A new-born baby is greater than 1 kg</p>
+                  }
                   <div className="d-flex justify-content-center gap-2 w-100">
-                    <Button type='submit' disabled={isHeight && isMaxHeight && isWeight && isMaxWeight ? false : true} variant="contained" className='py-2 fs-6 mt-3 w-50'>Calculate</Button>
+                    <Button type='submit' disabled={isHeight && isMaxHeight && isWeight && isMaxWeight && isminweight ? false : true} variant="contained" className='py-2 fs-6 mt-3 w-50'>Calculate</Button>
                     <Button onClick={Reset} variant="outlined" className='py-2 fs-6 mt-3 w-50'>Reset</Button>
                   </div>
                 </form>
